@@ -1,6 +1,6 @@
 # Different 25 Burrito combination making app.
 ##Pseudocode
-Declare variables int, double and string
+#####Declare variables int, double and string
 Declare and initialize string array
 
 Open while loop until counter reaches 25

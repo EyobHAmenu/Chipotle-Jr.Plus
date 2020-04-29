@@ -36,15 +36,15 @@ public class Chipotle {
         String randomRice, randomMeat,randomBean, randomSalsa, randomVeggies, randomCheese,
                 randomGuac, randomQueso, randomSourCream;
 
-        String rice [] = {"White", "Brown", "no rice", "All"};
-        String meat [] = {"Chicken", "Steak", "Carnidas", "Chorizo", "Sofritas", "Veggie Meat", "no meat", "All"};
-        String beans [] = {"Pinto", "Black", "no bean", "All"};
-        String salsa [] = {"Mild sauce", "Medium sauce", "Hot sauce", "no salsa", "All"};
-        String veggies [] = {"Lettuce", "Fajita Veggies", "no veggies", "All"};
-        String cheese [] = {"Cheese", "no cheese"};
-        String guac [] = {"Guacumole", "no guac"};
-        String queso [] = {"Queso", "no queso"};
-        String sourCream [] = {"Sour Cream", "no sour cream"};
+        String rice [] = {"White-rice", "Brown-rice", "no-rice", "All-rice"};
+        String meat [] = {"Chicken", "Steak", "Carnidas", "Chorizo", "Sofritas", "Veggie-Meat", "no-meat", "All-meat"};
+        String beans [] = {"Pinto-beans", "Black-beans", "no-bean", "All-beans"};
+        String salsa [] = {"Mild-sauce", "Medium-sauce", "Hot-sauce", "no-salsa", "All-salsa"};
+        String veggies [] = {"Lettuce", "Fajita-Veggies", "no-veggies", "All-veggies"};
+        String cheese [] = {"Cheese", "no-cheese"};
+        String guac [] = {"Guacumole", "no-guac"};
+        String queso [] = {"Queso", "no-queso"};
+        String sourCream [] = {"Sour-Cream", "no-sour-cream"};
 
         Random run = new Random();
         Scanner in = new Scanner(System.in);
@@ -106,14 +106,11 @@ public class Chipotle {
 
             if(numberOfNoItemSelected < 5) {
                 // print all selected item from the arrays and the total price
-                System.out.println("Burrito " + count + ":" + randomRice + ", " + randomMeat + ", " +
-                        randomBean + ", " + randomSalsa + "," + randomVeggies + ", " + randomCheese +
-                        ", " + randomGuac + "," + randomQueso + ", " + randomSourCream + "\t\t $" + oneOrderPrice);
+                System.out.println("Burrito " + count + ":" + randomRice + " " + randomMeat + " " +
+                        randomBean + " " + randomSalsa + " " + randomVeggies + " " + randomCheese +
+                        " " + randomGuac + " " + randomQueso + " " + randomSourCream + "\t\t $" + oneOrderPrice);
                 totalOrderPrice += oneOrderPrice;
             } else {
-                System.out.println("Burrito " + count + ":" + randomRice + ", " + randomMeat + ", " +
-                        randomBean + ", " + randomSalsa + "," + randomVeggies + ", " + randomCheese +
-                        ", " + randomGuac + "," + randomQueso + ", " + randomSourCream + "\t\t" + "Less than 5 items are selected.");
                 count--;
             }
         }

@@ -39,7 +39,7 @@ public class Chipotle {
         String rice [] = {"White", "Brown", "no rice", "All"};
         String meat [] = {"Chicken", "Steak", "Carnidas", "Chorizo", "Sofritas", "Veggie Meat", "no meat", "All"};
         String beans [] = {"Pinto", "Black", "no bean", "All"};
-        String salsa [] = {"Mild", "Medium", "Hot", "no salsa", "All"};
+        String salsa [] = {"Mild sauce", "Medium sauce", "Hot sauce", "no salsa", "All"};
         String veggies [] = {"Lettuce", "Fajita Veggies", "no veggies", "All"};
         String cheese [] = {"Cheese", "no cheese"};
         String guac [] = {"Guacumole", "no guac"};
@@ -56,48 +56,51 @@ public class Chipotle {
             numberOfNoItemSelected = 0;
             oneOrderPrice = 3;
 
-            randomNo = randomGenerator(rice,run); // generate number based on the length of the array.
-            randomRice = rice[randomNo];   // store the item selected using the random number
+           // randomNo = randomGenerator(run); // generate number based on the length of the array.
+
+
+            randomNo = randomGenerator(run);
+            randomRice = checkIndex(randomNo,rice);   // store the item selected using the random number
             numberOfNoItemSelected = countNoItemSelected(randomRice,numberOfNoItemSelected);
             oneOrderPrice = priceCalculator(randomRice,oneOrderPrice); // calculate the total price based on the item selected.
 
-            randomNo = randomGenerator(meat, run);
-            randomMeat = meat[randomNo];
+            randomNo = randomGenerator(run);
+            randomMeat = checkIndex(randomNo,meat);
             numberOfNoItemSelected = countNoItemSelected(randomMeat,numberOfNoItemSelected);
             oneOrderPrice =priceCalculator(randomMeat,oneOrderPrice);
 
-            randomNo = randomGenerator(beans, run);
-            randomBean = beans[randomNo];
+            randomNo = randomGenerator(run);
+            randomBean = checkIndex(randomNo,beans);
             numberOfNoItemSelected = countNoItemSelected(randomBean,numberOfNoItemSelected);
             oneOrderPrice =priceCalculator(randomBean,oneOrderPrice);
 
-            randomNo = randomGenerator(salsa, run);
-            randomSalsa = salsa[randomNo];
+            randomNo = randomGenerator(run);
+            randomSalsa = checkIndex(randomNo,salsa);
             numberOfNoItemSelected = countNoItemSelected(randomSalsa,numberOfNoItemSelected);
             oneOrderPrice =priceCalculator(randomSalsa,oneOrderPrice);
 
-            randomNo = randomGenerator(veggies, run);
-            randomVeggies = veggies[randomNo];
+            randomNo = randomGenerator(run);
+            randomVeggies = checkIndex(randomNo,veggies);
             numberOfNoItemSelected = countNoItemSelected(randomVeggies,numberOfNoItemSelected);
             oneOrderPrice =priceCalculator(randomVeggies,oneOrderPrice);
 
-            randomNo = randomGenerator(cheese, run);
-            randomCheese = cheese[randomNo];
+            randomNo = randomGenerator(run);
+            randomCheese = checkIndex(randomNo,cheese);
             numberOfNoItemSelected = countNoItemSelected(randomCheese,numberOfNoItemSelected);
             oneOrderPrice =priceCalculator(randomCheese,oneOrderPrice);
 
-            randomNo = randomGenerator(guac, run);
-            randomGuac = guac[randomNo];
+            randomNo = randomGenerator(run);
+            randomGuac = checkIndex(randomNo,guac);
             numberOfNoItemSelected = countNoItemSelected(randomGuac,numberOfNoItemSelected);
             oneOrderPrice =priceCalculator(randomGuac,oneOrderPrice);
 
-            randomNo = randomGenerator(queso, run);
-            randomQueso = queso[randomNo];
+            randomNo = randomGenerator(run);
+            randomQueso = checkIndex(randomNo,queso);
             numberOfNoItemSelected = countNoItemSelected(randomQueso,numberOfNoItemSelected);
             oneOrderPrice =priceCalculator(randomQueso,oneOrderPrice);
 
-            randomNo = randomGenerator(sourCream, run);
-            randomSourCream = sourCream[randomNo];
+            randomNo = randomGenerator(run);
+            randomSourCream = checkIndex(randomNo,sourCream);
             numberOfNoItemSelected = countNoItemSelected(randomSourCream,numberOfNoItemSelected);
             oneOrderPrice =priceCalculator(randomSourCream,oneOrderPrice);
 
@@ -119,17 +122,17 @@ public class Chipotle {
     }
 
     // This method generate random number based on the array length and return the number selected.
-    public static int randomGenerator(String arr[], Random r){
+    public static int randomGenerator(Random r){
         int randomNumber;
         // generate number 1 to array length
-        randomNumber = r.nextInt(arr.length);
+        randomNumber = r.nextInt(9);
         return randomNumber;
     }
 
     // calculate the total price based on the item selected based random number generated.
     public static double priceCalculator(String item, double currentPrice){
         // if the string start with 'n' that mean no item is selected so we add 0 to the total price.
-        if (item.charAt(0) == 'n')
+        if (item.charAt(0) == 'n' || item.equalsIgnoreCase(" "))
         {
             currentPrice += 0;
         } else{ // if not we add 0.5 to the total price.
@@ -138,9 +141,17 @@ public class Chipotle {
         return currentPrice;
     }
     public static int countNoItemSelected(String item, int count){
-        if (item.charAt(0) == 'n'){
+        if (item.equalsIgnoreCase(" ")){
             count++;
         }
         return count;
+    }
+
+    public static String checkIndex(int generate , String [] arr){
+        String out = " ";
+        if(generate < arr.length){
+            out = arr[generate];
+        }
+        return out;
     }
 }

@@ -56,10 +56,8 @@ public class Chipotle {
             numberOfNoItemSelected = 0;
             oneOrderPrice = 3;
 
-           // randomNo = randomGenerator(run); // generate number based on the length of the array.
-
-
             randomNo = randomGenerator(run);
+
             randomRice = checkIndex(randomNo,rice);   // store the item selected using the random number
             numberOfNoItemSelected = countNoItemSelected(randomRice,numberOfNoItemSelected);
             oneOrderPrice = priceCalculator(randomRice,oneOrderPrice); // calculate the total price based on the item selected.
@@ -108,7 +106,8 @@ public class Chipotle {
                 // print all selected item from the arrays and the total price
                 System.out.println("Burrito " + count + ":" + randomRice + " " + randomMeat + " " +
                         randomBean + " " + randomSalsa + " " + randomVeggies + " " + randomCheese +
-                        " " + randomGuac + " " + randomQueso + " " + randomSourCream + "\t\t $" + oneOrderPrice);
+                        " " + randomGuac + " " + randomQueso + " " + randomSourCream );
+                System.out.println("$" + oneOrderPrice);
                 totalOrderPrice += oneOrderPrice;
             } else {
                 count--;

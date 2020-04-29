@@ -29,7 +29,10 @@ public class Chipotle {
 
         int count = 0;
         int randomNo;
-        double totalPrice = 0;
+        int numberOfNoItemSelected;
+        double oneOrderPrice = 0;
+        double totalOrderPrice = 0;
+
         String randomRice, randomMeat,randomBean, randomSalsa, randomVeggies, randomCheese,
                 randomGuac, randomQueso, randomSourCream;
 
@@ -46,51 +49,72 @@ public class Chipotle {
         Random run = new Random();
         Scanner in = new Scanner(System.in);
 
+        System.out.println("List of 25 burrito combination.");
         while(count < 25){
+
             count++;
-            totalPrice = 3;
+            numberOfNoItemSelected = 0;
+            oneOrderPrice = 3;
 
             randomNo = randomGenerator(rice,run); // generate number based on the length of the array.
             randomRice = rice[randomNo];   // store the item selected using the random number
-            totalPrice = priceCalculator(randomRice,totalPrice); // calculate the total price based on the item selected.
+            numberOfNoItemSelected = countNoItemSelected(randomRice,numberOfNoItemSelected);
+            oneOrderPrice = priceCalculator(randomRice,oneOrderPrice); // calculate the total price based on the item selected.
 
             randomNo = randomGenerator(meat, run);
             randomMeat = meat[randomNo];
-            totalPrice =priceCalculator(randomMeat,totalPrice);
+            numberOfNoItemSelected = countNoItemSelected(randomMeat,numberOfNoItemSelected);
+            oneOrderPrice =priceCalculator(randomMeat,oneOrderPrice);
 
             randomNo = randomGenerator(beans, run);
             randomBean = beans[randomNo];
-            totalPrice =priceCalculator(randomBean,totalPrice);
+            numberOfNoItemSelected = countNoItemSelected(randomBean,numberOfNoItemSelected);
+            oneOrderPrice =priceCalculator(randomBean,oneOrderPrice);
 
             randomNo = randomGenerator(salsa, run);
             randomSalsa = salsa[randomNo];
-            totalPrice =priceCalculator(randomSalsa,totalPrice);
+            numberOfNoItemSelected = countNoItemSelected(randomSalsa,numberOfNoItemSelected);
+            oneOrderPrice =priceCalculator(randomSalsa,oneOrderPrice);
 
             randomNo = randomGenerator(veggies, run);
             randomVeggies = veggies[randomNo];
-            totalPrice =priceCalculator(randomVeggies,totalPrice);
+            numberOfNoItemSelected = countNoItemSelected(randomVeggies,numberOfNoItemSelected);
+            oneOrderPrice =priceCalculator(randomVeggies,oneOrderPrice);
 
             randomNo = randomGenerator(cheese, run);
             randomCheese = cheese[randomNo];
-            totalPrice =priceCalculator(randomCheese,totalPrice);
+            numberOfNoItemSelected = countNoItemSelected(randomCheese,numberOfNoItemSelected);
+            oneOrderPrice =priceCalculator(randomCheese,oneOrderPrice);
 
             randomNo = randomGenerator(guac, run);
             randomGuac = guac[randomNo];
-            totalPrice =priceCalculator(randomGuac,totalPrice);
+            numberOfNoItemSelected = countNoItemSelected(randomGuac,numberOfNoItemSelected);
+            oneOrderPrice =priceCalculator(randomGuac,oneOrderPrice);
 
             randomNo = randomGenerator(queso, run);
             randomQueso = queso[randomNo];
-            totalPrice =priceCalculator(randomQueso,totalPrice);
+            numberOfNoItemSelected = countNoItemSelected(randomQueso,numberOfNoItemSelected);
+            oneOrderPrice =priceCalculator(randomQueso,oneOrderPrice);
 
             randomNo = randomGenerator(sourCream, run);
             randomSourCream = sourCream[randomNo];
-            totalPrice =priceCalculator(randomSourCream,totalPrice);
+            numberOfNoItemSelected = countNoItemSelected(randomSourCream,numberOfNoItemSelected);
+            oneOrderPrice =priceCalculator(randomSourCream,oneOrderPrice);
 
-            // print all selected item from the arrays and the total price
-            System.out.println("Burrito " + count + ":" + randomRice + ", " + randomMeat + ", " +
-                    randomBean + ", " + randomSalsa + "," + randomVeggies + ", " + randomCheese +
-                    ", " + randomGuac + "," + randomQueso + ", " + randomSourCream + "\t\t $" + totalPrice);
+            if(numberOfNoItemSelected < 5) {
+                // print all selected item from the arrays and the total price
+                System.out.println("Burrito " + count + ":" + randomRice + ", " + randomMeat + ", " +
+                        randomBean + ", " + randomSalsa + "," + randomVeggies + ", " + randomCheese +
+                        ", " + randomGuac + "," + randomQueso + ", " + randomSourCream + "\t\t $" + oneOrderPrice);
+                totalOrderPrice += oneOrderPrice;
+            } else {
+                System.out.println("Burrito " + count + ":" + randomRice + ", " + randomMeat + ", " +
+                        randomBean + ", " + randomSalsa + "," + randomVeggies + ", " + randomCheese +
+                        ", " + randomGuac + "," + randomQueso + ", " + randomSourCream + "\t\t" + "Less than 5 items are selected.");
+                count--;
+            }
         }
+        System.out.println("Your total price is " + totalOrderPrice);
 
     }
 
@@ -112,5 +136,11 @@ public class Chipotle {
             currentPrice += 0.50;
         }
         return currentPrice;
+    }
+    public static int countNoItemSelected(String item, int count){
+        if (item.charAt(0) == 'n'){
+            count++;
+        }
+        return count;
     }
 }

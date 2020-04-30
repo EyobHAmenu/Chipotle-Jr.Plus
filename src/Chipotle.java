@@ -41,8 +41,9 @@ public class Chipotle {
         int whiteRice = 0, brownRice = 0, chicken = 0, steak = 0, carnidas = 0, chorizo = 0, sofritas = 0, veggieMeat = 0,
                 pintoBeans = 0, blackBeans = 0, mildSauce = 0, mediumSauce = 0, hotSouce = 0, lettuce = 0, fajitaVeggies = 0,
                 cheesein = 0, guacumole = 0, quesoin = 0, sourCreamin = 0;
+        String [] arraySentence;
 
-        String randomRice, randomMeat, randomBean, randomSalsa, randomVeggies, randomCheese,
+        String sentence,randomRice, randomMeat, randomBean, randomSalsa, randomVeggies, randomCheese,
                 randomGuac, randomQueso, randomSourCream;
 
 
@@ -179,13 +180,23 @@ public class Chipotle {
             }
         }
 
-
-        System.out.println("This order has " + whiteRice + " white rice, " + brownRice + " brown rice, " + chicken +
+        sentence = "This order has " + whiteRice + " white rice, " + brownRice + " brown rice, " + chicken +
                 " chicken, " + steak + " steak, " + carnidas + " carnitas, " + chorizo + " chorizo, " + sofritas + " sofritas, " +
                 veggieMeat + " veggies(as meat option), " + blackBeans + " black beans," + pintoBeans + " pinto beans, "
                 + mildSauce + " mild salsa, " + mediumSauce + " med salsa," + hotSouce + " hot salsa, " + fajitaVeggies +
                 " fajitas, " + lettuce + " lettuce, " + cheesein + " cheese, " + guacumole + " guac, " + quesoin + " queso, " +
-                sourCreamin + " sour cream and total price is $" + totalOrderPrice);
+                sourCreamin + " sour cream and total price is $" + totalOrderPrice;
+        arraySentence = sentence.split(" ");
+        count = 0;
+        for (int i = 0; i < arraySentence.length; i++) {
+            if(count > 50){
+                count = 0;
+                System.out.println();
+            }
+            count += arraySentence[i].length();
+            System.out.print(arraySentence[i] + " ");
+        }
+
     }
 
 

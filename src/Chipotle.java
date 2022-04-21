@@ -59,7 +59,7 @@ public class Chipotle {
         String sourCream[] = {"Sour-Cream", "no-sour-cream"};
 
         Random run = new Random();
-        Scanner in = new Scanner(System.in);
+        //Scanner in = new Scanner(System.in);
 
         System.out.println("List of 25 burrito combination.");
         while (count < 25) {
